@@ -1,4 +1,8 @@
-export const Footer = ({theme}) => {
+import { ThemeContext } from "../../Context";
+import { useContext } from "react";
+
+export const Footer = () => {
+  const {theme} = useContext(ThemeContext);
     return (
       <footer className={`${theme}`}>
         <h4> May the force be with you</h4>

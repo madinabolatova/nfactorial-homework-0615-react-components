@@ -5,7 +5,11 @@
 }
 
 .day {
-  background-color: aqua;
+  background-color: rgb(227, 224, 224);
+}
+
+.day h4, .day .footer-links a, .day h4, .day .item-list-layout, .day .select-item {
+  color: black;
 }
 
 header {

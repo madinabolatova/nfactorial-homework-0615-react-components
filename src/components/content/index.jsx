@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ThemeContext } from "../../Context";
+
 
 import swCharacters from "../../data/characters.json";
 import swPlanets from "../../data/planets.json";
@@ -8,12 +10,14 @@ import { ItemSpisok } from "../sw-item-spisok";
 
 import { ItemLists } from "../sw-item-lists";
 
-export const Content = ({ handleCreateFan, theme }) => {
+export const Content = ({ handleCreateFan }) => {
   const [selector, setSelector] = useState("Characters");
 
   const handleSelectorChange = (event) => {
     setSelector(event.target.value);
   };
+
+  const {theme} = useContext(ThemeContext);
 
   return (
     <div className={`content-layout ${theme}`}>

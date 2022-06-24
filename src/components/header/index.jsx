@@ -6,7 +6,7 @@ import { ReactComponent as TwitterLogoSVG } from "../../assets/twitter.svg";
 import { ReactComponent as YoutubeLogoSVG } from "../../assets/youtube.svg";
 
 import { useContext } from "react";
-import { DefaultContext } from "../../Context";
+import { ThemeContext } from "../../Context";
 
 import SearchIcon from '@mui/icons-material/Search';
 import Button from "@mui/material/Button";
@@ -35,11 +35,11 @@ const swLinks = [
   },
 ];
 
-export const Header = ({ fan, theme }) => {
-  const {handleSetTheme} = useContext(DefaultContext);
+export const Header = ({ fan }) => {
+  const {handleSetTheme, theme} = useContext(ThemeContext);
   return (
     <header>
-      <div className={`links-layout ${theme}`}>
+      <div className="links-layout">
         {swLinks.map((link) => (
           <a
             key={link.name}
@@ -57,11 +57,11 @@ export const Header = ({ fan, theme }) => {
       <div className="search-layout">
         <input placeholder="Search Star Wars" type="text" />
         <Button><SearchIcon></SearchIcon></Button>
-        <div style={{ color: "rgb(50, 43, 122)", paddingTop: "1rem" }}>
+        <div style={{ color: "white", paddingTop: "1rem" }}>
           I am fan of: {fan}
         </div>
       </div>
-      <button onClick={() => handleSetTheme(theme)} className="change-button">Change Theme</button>
+      <button onClick={handleSetTheme} className="change-button">Change Theme</button>
     </header>
   );
 };

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DefaultContext } from "./Context";
+import { ThemeContext } from "./Context";
 
 //импортируем стили
 import "./App.css";
@@ -16,21 +17,18 @@ export default function App() {
     setFan(name);
   };
 
-  const handleSetTheme = ({theme}) => {
-    if (theme === "night") {
-      setTheme("day");
-    } else {
-      setTheme("night");
-    }
+  const handleSetTheme = () => {
+    setTheme((prevTheme) => prevTheme === "night" ? "day" : "night")
   };
 
   return (
-    <DefaultContext.Provider value={{ handleCreateFan, handleSetTheme }}>
-      <Header fan={fan} theme={theme}/>
-      <hr />
-      <Content theme={theme}/>
-      <Footer theme={theme}/>
-
+    <DefaultContext.Provider value={{ handleCreateFan}}>
+      <ThemeContext.Provider value={{handleSetTheme, theme}}>
+        <Header fan={fan}/>
+        <hr />
+        <Content/>
+        <Footer/>
+      </ThemeContext.Provider>
     </DefaultContext.Provider>
   );
 }
